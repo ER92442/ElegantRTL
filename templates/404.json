@@ -1,5 +1,8 @@
 {
   "sections": {
+    "header": {
+      "type": "header"
+    },
     "main": {
       "type": "main-404",
       "settings": {
@@ -11,10 +14,15 @@
         "padding_top": 80,
         "padding_bottom": 80
       }
+    },
+    "footer": {
+      "type": "footer"
     }
   },
   "order": [
-    "main"
+    "header",
+    "main",
+    "footer"
   ]
 }
 
