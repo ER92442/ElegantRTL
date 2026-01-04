@@ -1,0 +1,55 @@
+{%- liquid
+  assign product = product | default: product_card_product
+  assign media_ratio = product.featured_media.aspect_ratio | default: 1.0
+  assign lazy_load = lazy_load | default: false
+-%}
+
+<div class="card product-card" data-animate="fade-in">
+  <a href="{{ product.url }}" class="product-card__link">
+    <div class="product-card__image-wrapper">
+      {%- if product.featured_media -%}
+        <img
+          srcset="{%- if product.featured_media.width >= 165 -%}{{ product.featured_media | image_url: width: 165 }} 165w,{%- endif -%}
+                  {%- if product.featured_media.width >= 360 -%}{{ product.featured_media | image_url: width: 360 }} 360w,{%- endif -%}
+                  {%- if product.featured_media.width >= 533 -%}{{ product.featured_media | image_url: width: 533 }} 533w,{%- endif -%}
+                  {%- if product.featured_media.width >= 720 -%}{{ product.featured_media | image_url: width: 720 }} 720w,{%- endif -%}
+                  {%- if product.featured_media.width >= 940 -%}{{ product.featured_media | image_url: width: 940 }} 940w,{%- endif -%}
+                  {%- if product.featured_media.width >= 1066 -%}{{ product.featured_media | image_url: width: 1066 }} 1066w,{%- endif -%}
+                  {{ product.featured_media | image_url }} {{ product.featured_media.width }}w"
+          src="{{ product.featured_media | image_url: width: 533 }}"
+          sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+          alt="{{ product.featured_media.alt | escape }}"
+          class="product-card__image"
+          {% unless lazy_load == false %}loading="lazy"{% endunless %}
+          width="{{ product.featured_media.width }}"
+          height="{{ product.featured_media.height }}"
+        >
+      {%- else -%}
+        {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+
+      {%- if product.compare_at_price > product.price and product.available -%}
+        <span class="badge badge--bottom-left color-accent-2">{{ 'products.product.on_sale' | t }}</span>
+      {%- endif -%}
+
+      {%- unless product.available -%}
+        <span class="badge badge--bottom-left color-accent-1">{{ 'products.product.sold_out' | t }}</span>
+      {%- endunless -%}
+    </div>
+
+    <div class="product-card__content">
+      <h3 class="product-card__heading">
+        <span>{{ product.title | escape }}</span>
+      </h3>
+
+      {%- render 'price', product: product, price_class: 'price--on-sale' -%}
+
+      {%- if product.vendor != blank -%}
+        <div class="product-card__vendor caption-with-letter-spacing">
+          {{ product.vendor }}
+        </div>
+      {%- endif -%}
+    </div>
+  </a>
+</div>
+

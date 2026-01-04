@@ -1,0 +1,203 @@
+/* ElegantRTL Theme - RTL Specific Overrides */
+
+/* RTL-specific adjustments for elements that need explicit direction changes */
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+/* RTL Utility Classes */
+[dir="rtl"] .rtl-flip {
+  transform: scaleX(-1);
+}
+
+[dir="rtl"] .rtl-reverse {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .rtl-text-right {
+  text-align: right;
+}
+
+[dir="rtl"] .rtl-text-left {
+  text-align: left;
+}
+
+[dir="rtl"] .rtl-ml-auto {
+  margin-inline-start: auto;
+  margin-inline-end: 0;
+}
+
+[dir="rtl"] .rtl-mr-auto {
+  margin-inline-end: auto;
+  margin-inline-start: 0;
+}
+
+/* Flip icons and arrows in RTL */
+[dir="rtl"] .icon-arrow,
+[dir="rtl"] .icon-chevron,
+[dir="rtl"] .icon-arrow-right,
+[dir="rtl"] .icon-arrow-left,
+[dir="rtl"] svg[class*="arrow"],
+[dir="rtl"] .arrow-icon {
+  transform: scaleX(-1);
+}
+
+/* Reverse flex direction for navigation and menus */
+[dir="rtl"] .nav-menu,
+[dir="rtl"] .menu-list,
+[dir="rtl"] .breadcrumbs {
+  flex-direction: row-reverse;
+}
+
+/* Reverse grid order for product grids */
+[dir="rtl"] .product-grid,
+[dir="rtl"] .collection-grid {
+  direction: rtl;
+}
+
+/* Form alignment in RTL */
+[dir="rtl"] .form-input,
+[dir="rtl"] .form-select,
+[dir="rtl"] .form-textarea {
+  text-align: right;
+}
+
+[dir="rtl"] .form-label {
+  text-align: right;
+}
+
+/* Button icon positioning */
+[dir="rtl"] .btn-icon-start {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .btn-icon-end {
+  flex-direction: row-reverse;
+}
+
+/* Cart drawer and modals */
+[dir="rtl"] .drawer,
+[dir="rtl"] .modal {
+  left: auto;
+  right: 0;
+}
+
+[dir="rtl"] .drawer[data-drawer="left"] {
+  right: auto;
+  left: 0;
+}
+
+/* Slider/Carousel direction */
+[dir="rtl"] .slider,
+[dir="rtl"] .carousel {
+  direction: rtl;
+}
+
+[dir="rtl"] .slider-track {
+  flex-direction: row-reverse;
+}
+
+/* Pagination */
+[dir="rtl"] .pagination {
+  flex-direction: row-reverse;
+}
+
+/* Search bar */
+[dir="rtl"] .search-input {
+  padding-inline-start: var(--spacing-xl);
+  padding-inline-end: var(--spacing-md);
+}
+
+[dir="rtl"] .search-icon {
+  left: auto;
+  right: var(--spacing-md);
+}
+
+/* Dropdown menus */
+[dir="rtl"] .dropdown-menu {
+  left: auto;
+  right: 0;
+  text-align: right;
+}
+
+/* Social sharing icons */
+[dir="rtl"] .social-share {
+  flex-direction: row-reverse;
+}
+
+/* Product image gallery navigation */
+[dir="rtl"] .gallery-nav-prev {
+  left: auto;
+  right: var(--spacing-md);
+}
+
+[dir="rtl"] .gallery-nav-next {
+  right: auto;
+  left: var(--spacing-md);
+}
+
+/* Price and currency alignment */
+[dir="rtl"] .price {
+  direction: ltr;
+  text-align: right;
+  display: inline-block;
+}
+
+/* Badge positioning */
+[dir="rtl"] .badge {
+  left: auto;
+  right: var(--spacing-sm);
+}
+
+/* Tooltip positioning */
+[dir="rtl"] .tooltip {
+  left: auto;
+  right: 50%;
+  transform: translateX(50%);
+}
+
+/* Notification/Toast positioning */
+[dir="rtl"] .notification,
+[dir="rtl"] .toast {
+  left: auto;
+  right: var(--spacing-lg);
+}
+
+/* Mobile menu */
+[dir="rtl"] .mobile-menu {
+  left: auto;
+  right: 0;
+}
+
+[dir="rtl"] .mobile-menu-close {
+  left: auto;
+  right: var(--spacing-lg);
+}
+
+/* Checkout and cart items */
+[dir="rtl"] .cart-item,
+[dir="rtl"] .checkout-item {
+  flex-direction: row-reverse;
+}
+
+/* Quantity selector */
+[dir="rtl"] .quantity-selector {
+  flex-direction: row-reverse;
+}
+
+/* Filter sidebar */
+[dir="rtl"] .filter-sidebar {
+  left: auto;
+  right: 0;
+}
+
+/* Text utilities override for RTL */
+[dir="rtl"] .text-left {
+  text-align: right;
+}
+
+[dir="rtl"] .text-right {
+  text-align: left;
+}
+

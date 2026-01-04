@@ -1,0 +1,72 @@
+{%- unless template == 'index' or template == 'cart' or template == 'list-collections' or template == '404' -%}
+  {%- assign t = template | split: '.' | first -%}
+
+  <nav class="breadcrumbs" role="navigation" aria-label="breadcrumbs">
+    <ol class="breadcrumbs__list">
+      <li class="breadcrumbs__item">
+        <a class="breadcrumbs__link" href="{{ routes.root_url }}">{{ 'general.breadcrumbs.home' | t }}</a>
+        {% render 'icon-arrow' %}
+      </li>
+
+      {%- case t -%}
+        {%- when 'page' -%}
+          <li class="breadcrumbs__item">
+            <span class="breadcrumbs__link" aria-current="page">{{ page.title }}</span>
+          </li>
+        {%- when 'product' -%}
+          {%- if collection.url -%}
+            <li class="breadcrumbs__item">
+              <a class="breadcrumbs__link" href="{{ collection.url }}">{{ collection.title }}</a>
+              {% render 'icon-arrow' %}
+            </li>
+          {%- endif -%}
+          <li class="breadcrumbs__item">
+            <span class="breadcrumbs__link" aria-current="page">{{ product.title }}</span>
+          </li>
+        {%- when 'collection' and collection.handle -%}
+          {%- if current_tags -%}
+            <li class="breadcrumbs__item">
+              <a class="breadcrumbs__link" href="{{ collection.url }}">{{ collection.title }}</a>
+              {% render 'icon-arrow' %}
+            </li>
+            <li class="breadcrumbs__item">
+              {%- capture tag_url -%}{{ collection.url }}/{{ current_tags | join: "+" }}{%- endcapture -%}
+              <span class="breadcrumbs__link" aria-current="page">{{ current_tags | join: " + " }}</span>
+            </li>
+          {%- else -%}
+            <li class="breadcrumbs__item">
+              <span class="breadcrumbs__link" aria-current="page">{{ collection.title }}</span>
+            </li>
+          {%- endif -%}
+        {%- when 'blog' -%}
+          {%- if current_tags -%}
+            <li class="breadcrumbs__item">
+              <a class="breadcrumbs__link" href="{{ blog.url }}">{{ blog.title }}</a>
+              {% render 'icon-arrow' %}
+            </li>
+            <li class="breadcrumbs__item">
+              {%- capture tag_url -%}{{ blog.url }}/tagged/{{ current_tags | join: "+" }}{%- endcapture -%}
+              <span class="breadcrumbs__link" aria-current="page">{{ current_tags | join: " + " }}</span>
+            </li>
+          {%- else -%}
+            <li class="breadcrumbs__item">
+              <span class="breadcrumbs__link" aria-current="page">{{ blog.title }}</span>
+            </li>
+          {%- endif -%}
+        {%- when 'article' -%}
+          <li class="breadcrumbs__item">
+            <a class="breadcrumbs__link" href="{{ blog.url }}">{{ blog.title }}</a>
+            {% render 'icon-arrow' %}
+          </li>
+          <li class="breadcrumbs__item">
+            <span class="breadcrumbs__link" aria-current="page">{{ article.title }}</span>
+          </li>
+        {%- else -%}
+          <li class="breadcrumbs__item">
+            <span class="breadcrumbs__link" aria-current="page">{{ page_title }}</span>
+          </li>
+      {%- endcase -%}
+    </ol>
+  </nav>
+{%- endunless -%}
+

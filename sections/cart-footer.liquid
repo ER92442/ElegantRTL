@@ -1,0 +1,100 @@
+<div class="cart__footer">
+  <div class="cart__blocks">
+    {%- if cart.cart_level_discount_applications.size > 0 -%}
+      <div class="cart__discounts cart__blocks">
+        <div>
+          {%- for cart_discount in cart.cart_level_discount_applications -%}
+            <div class="cart__discount">
+              <span class="cart-discount">
+                <svg aria-hidden="true" focusable="false" class="icon icon-discount" viewBox="0 0 12 12">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M7 0h3a2 2 0 012 2v3a1 1 0 01-.3.7l-6 6a1 1 0 01-1.4 0l-4-4a1 1 0 010-1.4l6-6A1 1 0 017 0zm2.5 1.5L6 6 7 7l4.5-4.5h-2z" fill="currentColor"/>
+                </svg>
+                {{- cart_discount.title -}}
+              </span>
+              <span class="cart-discount">-{{ cart_discount.total_allocated_amount | money }}</span>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    {%- endif -%}
+
+    <div class="js-contents">
+      <div class="totals">
+        <h2 class="totals__subtotal">{{ 'sections.cart.subtotals.subtotal' | t }}</h2>
+        <p class="totals__subtotal-value">{{ cart.total_price | money_with_currency }}</p>
+      </div>
+
+      <div>
+        {%- if cart.cart_level_discount_applications.size > 0 -%}
+          <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
+            {%- for cart_discount in cart.cart_level_discount_applications -%}
+              <li class="discounts__discount discounts__discount--end">
+                {%- render 'icon-discount' -%}
+                {{- cart_discount.title -}}
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+      </div>
+
+      <small class="tax-note caption-large rte">
+        {%- if cart.taxes_included and shop.shipping_policy.body != blank -%}
+          {{ 'sections.cart.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url }}
+        {%- elsif cart.taxes_included -%}
+          {{ 'sections.cart.taxes_included_but_shipping_at_checkout' | t }}
+        {%- elsif shop.shipping_policy.body != blank -%}
+          {{ 'sections.cart.taxes_and_shipping_policy_at_checkout_html' | t: link: shop.shipping_policy.url }}
+        {%- else -%}
+          {{ 'sections.cart.taxes_and_shipping_at_checkout' | t }}
+        {%- endif -%}
+      </small>
+    </div>
+
+    <div class="cart__ctas" {{ block.shopify_attributes }}>
+      <noscript>
+        <button type="submit" class="cart__update-button button button--secondary" form="cart">
+          {{ 'sections.cart.update' | t }}
+        </button>
+      </noscript>
+
+      <button type="submit" id="checkout" class="cart__checkout-button button" name="checkout"{% if cart == empty %} disabled{% endif %} form="cart">
+        {{ 'sections.cart.checkout' | t }}
+      </button>
+    </div>
+
+    <div id="cart-errors"></div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.cart-footer.name",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ]
+}
+{% endschema %}
+

@@ -1,0 +1,122 @@
+{
+  "general": {
+    "meta": {
+      "tags": "Tagged \"{{ tags }}\"",
+      "page": "Page {{ page }}"
+    },
+    "search": {
+      "search": "Search"
+    },
+    "social": {
+      "share_label": "Share",
+      "share_on_facebook": "Share on Facebook",
+      "share_on_twitter": "Share on Twitter",
+      "share_on_pinterest": "Share on Pinterest",
+      "share_url": "Share URL",
+      "copy_to_clipboard": "Copy to clipboard",
+      "close": "Close",
+      "success_message": "Link copied to clipboard"
+    },
+    "breadcrumbs": {
+      "home": "Home"
+    },
+    "slider": {
+      "previous_slide": "Previous slide",
+      "next_slide": "Next slide",
+      "of": "of"
+    },
+    "continue_shopping": "Continue shopping"
+  },
+  "sections": {
+    "header": {
+      "cart_count": "{{ count }} items in cart"
+    },
+    "cart": {
+      "title": "Cart",
+      "empty": "Your cart is empty",
+      "update": "Update cart",
+      "checkout": "Checkout",
+      "headings": {
+        "product": "Product",
+        "quantity": "Quantity",
+        "total": "Total"
+      },
+      "remove_title": "Remove {{ title }}",
+      "subtotals": {
+        "subtotal": "Subtotal"
+      },
+      "taxes_included_and_shipping_policy_html": "Taxes included. <a href=\"{{ link }}\">Shipping</a> calculated at checkout.",
+      "taxes_included_but_shipping_at_checkout": "Taxes included. Shipping calculated at checkout.",
+      "taxes_and_shipping_policy_at_checkout_html": "Taxes and <a href=\"{{ link }}\">shipping</a> calculated at checkout.",
+      "taxes_and_shipping_at_checkout": "Taxes and shipping calculated at checkout."
+    },
+    "slideshow": {
+      "previous_slideshow": "Previous slideshow",
+      "next_slideshow": "Next slideshow",
+      "pause_slideshow": "Pause slideshow",
+      "play_slideshow": "Play slideshow",
+      "load_slide": "Load slide",
+      "of": "of"
+    },
+    "collection_template": {
+      "empty": "No products found",
+      "use_fewer_filters_html": "Try <a href=\"{{ link }}\" class=\"{{ class }}\">removing some filters</a> or browse other items."
+    },
+    "featured_collection": {
+      "view_all": "View all",
+      "view_all_label": "View all products in {{ collection_name }}"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to cart",
+      "sold_out": "Sold out",
+      "unavailable": "Unavailable",
+      "on_sale": "On Sale",
+      "quantity": {
+        "label": "Quantity",
+        "input_label": "Quantity for {{ product }}",
+        "increase": "Increase quantity for {{ product }}",
+        "decrease": "Decrease quantity for {{ product }}"
+      },
+      "price": {
+        "regular_price": "Regular price",
+        "sale_price": "Sale price",
+        "unit_price": "Unit price",
+        "free": "Free"
+      },
+      "value_unavailable": "{{ value }} is unavailable",
+      "view_all": "View all products",
+      "media": {
+        "gallery_viewer": "Gallery",
+        "image_available": "Image {{ index }} is available in gallery",
+        "open_media": "Open media {{ index }}"
+      },
+    "xr_button_label": "View in your space"
+    }
+  },
+  "templates": {
+    "cart": {
+      "cart": "Cart"
+    }
+  },
+  "accessibility": {
+    "skip_to_text": "Skip to content",
+    "refresh_page": "Refresh page",
+    "link_messages": {
+      "new_window": "Opens in a new window."
+    },
+    "expand_menu": "Expand menu",
+    "unit_price_separator": "per"
+  },
+  "customer": {
+    "account_fallback": "Account",
+    "log_in": "Log in"
+  },
+  "newsletter": {
+    "label": "Email",
+    "button_label": "Subscribe",
+    "success": "Thanks for subscribing"
+  }
+}
+

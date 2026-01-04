@@ -1,0 +1,39 @@
+{%- comment -%}
+  Meta tags snippet for SEO and social sharing
+{%- endcomment -%}
+
+<meta property="og:site_name" content="{{ shop.name }}">
+<meta property="og:url" content="{{ canonical_url }}">
+<meta property="og:title" content="{{ page_title }}">
+{% if page_description %}
+  <meta property="og:description" content="{{ page_description | escape }}">
+{% endif %}
+<meta property="og:type" content="website">
+
+{% if template contains 'product' %}
+  <meta property="og:type" content="product">
+  {% if product.featured_media %}
+    <meta property="og:image" content="http:{{ product.featured_media | image_url: width: 1200 }}">
+    <meta property="og:image:secure_url" content="https:{{ product.featured_media | image_url: width: 1200 }}">
+  {% endif %}
+  <meta property="product:price:amount" content="{{ product.selected_or_first_available_variant.price | money_without_currency | remove: ',' }}">
+  <meta property="product:price:currency" content="{{ cart.currency.iso_code }}">
+{% elsif template contains 'article' %}
+  <meta property="og:type" content="article">
+  {% if article.image %}
+    <meta property="og:image" content="http:{{ article.image | image_url: width: 1200 }}">
+    <meta property="og:image:secure_url" content="https:{{ article.image | image_url: width: 1200 }}">
+  {% endif %}
+{% elsif template contains 'collection' %}
+  {% if collection.featured_image %}
+    <meta property="og:image" content="http:{{ collection.featured_image | image_url: width: 1200 }}">
+    <meta property="og:image:secure_url" content="https:{{ collection.featured_image | image_url: width: 1200 }}">
+  {% endif %}
+{% endif %}
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ page_title }}">
+{% if page_description %}
+  <meta name="twitter:description" content="{{ page_description | escape }}">
+{% endif %}
+
