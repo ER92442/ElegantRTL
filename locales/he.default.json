@@ -4,9 +4,6 @@
       "tags": "תגיות \"{{ tags }}\"",
       "page": "עמוד {{ page }}"
     },
-    "search": {
-      "search": "חיפוש"
-    },
     "social": {
       "share_label": "שתף",
       "share_on_facebook": "שתף בפייסבוק",
@@ -25,7 +22,15 @@
       "next_slide": "שקופית הבאה",
       "of": "מתוך"
     },
-    "continue_shopping": "המשך קניות"
+    "continue_shopping": "המשך קניות",
+    "404": {
+      "link": "חזרה לעמוד הבית",
+      "back": "חזור אחורה"
+    },
+    "search": {
+      "search": "חיפוש",
+      "submit": "חפש"
+    }
   },
   "sections": {
     "header": {
@@ -98,6 +103,12 @@
   "templates": {
     "cart": {
       "cart": "עגלה"
+    },
+    "search": {
+      "title": "תוצאות חיפוש",
+      "no_results": "לא נמצאו תוצאות",
+      "results_for": "תוצאות חיפוש עבור \"{{ terms }}\"",
+      "no_results_text": "מצטערים, לא מצאנו תוצאות עבור \"{{ terms }}\"."
     }
   },
   "accessibility": {

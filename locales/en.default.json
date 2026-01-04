@@ -4,9 +4,6 @@
       "tags": "Tagged \"{{ tags }}\"",
       "page": "Page {{ page }}"
     },
-    "search": {
-      "search": "Search"
-    },
     "social": {
       "share_label": "Share",
       "share_on_facebook": "Share on Facebook",
@@ -25,7 +22,15 @@
       "next_slide": "Next slide",
       "of": "of"
     },
-    "continue_shopping": "Continue shopping"
+    "continue_shopping": "Continue shopping",
+    "404": {
+      "link": "Back to home",
+      "back": "Go back"
+    },
+    "search": {
+      "search": "Search",
+      "submit": "Search"
+    }
   },
   "sections": {
     "header": {
@@ -98,6 +103,12 @@
   "templates": {
     "cart": {
       "cart": "Cart"
+    },
+    "search": {
+      "title": "Search results",
+      "no_results": "No results found",
+      "results_for": "Search results for \"{{ terms }}\"",
+      "no_results_text": "Sorry, we couldn't find any results for \"{{ terms }}\"."
     }
   },
   "accessibility": {
