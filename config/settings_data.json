@@ -37,7 +37,10 @@
     "inputs_shadow_opacity": 0,
     "inputs_shadow_horizontal_offset": 0,
     "inputs_shadow_vertical_offset": 0,
-    "inputs_shadow_blur": 0
+    "inputs_shadow_blur": 0,
+    "cart_type": "notification",
+    "cart_notification_color_scheme": "background-1",
+    "predictive_search_enabled": true
   }
 }
 

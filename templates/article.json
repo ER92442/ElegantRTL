@@ -1,0 +1,31 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-article",
+      "settings": {
+        "show_date": true,
+        "show_author": true,
+        "show_tags": true,
+        "show_comments": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "related-posts": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Related Articles",
+        "products_to_show": 3,
+        "columns_desktop": 3,
+        "show_view_all": false,
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "related-posts"
+  ]
+}
+

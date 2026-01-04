@@ -1,0 +1,44 @@
+{%- liquid
+  assign show_image = show_image | default: true
+  assign show_date = show_date | default: true
+  assign show_author = show_author | default: false
+  assign show_excerpt = show_excerpt | default: true
+-%}
+
+<div class="article-card card-wrapper">
+  <div class="card card--media">
+    {%- if show_image and article.image -%}
+      <div class="card__media">
+        <a href="{{ article.url }}" class="media media--adapt">
+          {{ article.image | image_url: width: 533 | image_tag: loading: 'lazy', alt: article.image.alt | escape }}
+        </a>
+      </div>
+    {%- endif -%}
+    <div class="card__content">
+      <h3 class="card__heading h5">
+        <a href="{{ article.url }}">{{ article.title | escape }}</a>
+      </h3>
+      <div class="card__info">
+        {%- if show_date -%}
+          <span class="article-card__date">
+            {{ article.published_at | time_tag: format: 'date' }}
+          </span>
+        {%- endif -%}
+        {%- if show_author and article.author != blank -%}
+          <span class="article-card__author">
+            {{ article.author }}
+          </span>
+        {%- endif -%}
+      </div>
+      {%- if show_excerpt and article.excerpt != blank -%}
+        <p class="card__excerpt">{{ article.excerpt | strip_html | truncatewords: 20 }}</p>
+      {%- elsif show_excerpt and article.content != blank -%}
+        <p class="card__excerpt">{{ article.content | strip_html | truncatewords: 20 }}</p>
+      {%- endif -%}
+      <a href="{{ article.url }}" class="button button--tertiary">
+        {{ 'blogs.article.read_more' | t }}
+      </a>
+    </div>
+  </div>
+</div>
+

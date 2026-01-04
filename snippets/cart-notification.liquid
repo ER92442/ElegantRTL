@@ -1,0 +1,59 @@
+{%- liquid
+  assign color_scheme = color_scheme | default: settings.cart_notification_color_scheme
+-%}
+
+<cart-notification class="cart-notification-wrapper page-width{% if cart == empty %} is-empty{% endif %}" data-cart-notification>
+  <div class="cart-notification color-{{ color_scheme }} gradient" role="status" aria-live="polite" aria-labelledby="cart-notification-product" tabindex="-1">
+    <div class="cart-notification__header">
+      <h2 class="cart-notification__heading" id="cart-notification-product">
+        {%- if cart != empty -%}
+          {{ 'general.cart.item_added' | t }}
+        {%- else -%}
+          {{ 'general.cart.empty' | t }}
+        {%- endif -%}
+      </h2>
+      <button type="button" class="cart-notification__close modal__close-button link link--text focus-inset" aria-label="{{ 'accessibility.close' | t }}">
+        {% render 'icon-close' %}
+      </button>
+    </div>
+    <div class="cart-notification-product" id="cart-notification-product">
+      {%- if cart != empty -%}
+        {%- liquid
+          assign cart_items = cart.items
+          assign cart_item = cart_items | first
+        -%}
+        <div class="cart-notification-product__image">
+          {%- if cart_item.image -%}
+            {{ cart_item.image | image_url: width: 110 | image_tag: loading: 'lazy', alt: cart_item.image.alt | escape }}
+          {%- endif -%}
+        </div>
+        <div class="cart-notification-product__info">
+          <h3 class="cart-notification-product__name h4">{{ cart_item.product.title | escape }}</h3>
+          {%- if cart_item.original_price != cart_item.final_price -%}
+            <div class="cart-notification-product__price cart-notification-product__price--sale">
+              <span class="visually-hidden">{{ 'products.product.price.regular_price' | t }}</span>
+              <s class="cart-item__old-price product-option">{{ cart_item.original_price | money }}</s>
+              <span class="visually-hidden">{{ 'products.product.price.sale_price' | t }}</span>
+              <span class="price price--end">{{ cart_item.final_price | money }}</span>
+            </div>
+          {%- else -%}
+            <div class="cart-notification-product__price">
+              <span class="price">{{ cart_item.original_price | money }}</span>
+            </div>
+          {%- endif -%}
+          {%- if cart_item.quantity > 1 -%}
+            <p class="cart-notification-product__quantity">{{ 'sections.cart.quantity' | t }}: {{ cart_item.quantity }}</p>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+    <div class="cart-notification__links">
+      <a href="{{ routes.cart_url }}" id="cart-notification-button" class="button button--secondary button--full-width">{{ 'general.cart.view_cart' | t }}</a>
+      <form action="{{ routes.cart_url }}" method="post" id="cart-notification-form">
+        <button class="button button--primary button--full-width" name="checkout">{{ 'sections.cart.checkout' | t }}</button>
+      </form>
+      <button type="button" class="link button-label">{{ 'general.continue_shopping' | t }}</button>
+    </div>
+  </div>
+</cart-notification>
+
